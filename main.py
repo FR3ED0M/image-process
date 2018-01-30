@@ -6,11 +6,9 @@ parent = Tk()
 
 
 def do_popup(event):
-    # display the popup menu
     try:
         popup.tk_popup(event.x_root, event.y_root, 0)
     finally:
-        # make sure to release the grab
         popup.grab_release()
 
 
