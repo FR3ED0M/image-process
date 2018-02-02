@@ -15,57 +15,67 @@ def do_popup(event):
 class openImage:
     def openPlains(self):
         image = Image.open("plains.jpg")
+        image.save('new_image.png')
         image = image.resize((250, 250), Image.ANTIALIAS)
         photo = ImageTk.PhotoImage(image)
         label4 = Label(image=photo)
         label4.image = photo
-        label4.place(x=5, y=75)
+        label4.place(x=10, y=75)
+        return
 
     def openBoxy(self):
         image = Image.open("boxy.jpg")
+        image.save('new_image.png')
         image = image.resize((250, 250), Image.ANTIALIAS)
         photo = ImageTk.PhotoImage(image)
         label4 = Label(image=photo)
         label4.image = photo
-        label4.place(x=5, y=75)
+        label4.place(x=10, y=75)
+        return
 
     def openColors(self):
         image = Image.open("colors.jpg")
+        image.save('new_image.png')
         image = image.resize((250, 250), Image.ANTIALIAS)
         photo = ImageTk.PhotoImage(image)
         label4 = Label(image=photo)
         label4.image = photo
-        label4.place(x=5, y=75)
+        label4.place(x=10, y=75)
+        return
 
     def openSpace(self):
         image = Image.open("space.jpg")
+        image.save('new_image.png')
         image = image.resize((250, 250), Image.ANTIALIAS)
         photo = ImageTk.PhotoImage(image)
         label4 = Label(image=photo)
         label4.image = photo
-        label4.place(x=5, y=75)
-
-    def openPlasma(self):
-        image = Image.open("plasma.jpg")
-        image = image.resize((250, 250), Image.ANTIALIAS)
-        photo = ImageTk.PhotoImage(image)
-        label4 = Label(image=photo)
-        label4.image = photo
-        label4.place(x=5, y=75)
+        label4.place(x=10, y=75)
         return
 
+    def openPlasma(self):
+        im = Image.open("plasma.jpg")
+        im.save('new_image.png')
+        im = im.resize((250, 250), Image.ANTIALIAS)
+        ph = ImageTk.PhotoImage(im)
+        label4 = Label(image=ph)
+        label4.image = ph
+        label4.place(x=10, y=75)
+        return im
 
-# def renderfy():
-#     photo = openImage.openPlasma()
-#     label8 = Label(image=photo)
-#     label8.image = photo
-#     label8.place(x=350, y=75)
+    def renderfy(self):
+        im2 = Image.open("new_image.png")
+        im2 = im2.resize((250, 250), Image.ANTIALIAS)
+        ph2 = ImageTk.PhotoImage(im2)
+        label8 = Label(image=ph2)
+        label8.image = ph2
+        label8.place(x=300, y=75)
 
 
 # create a popup menu
 x = openImage()
 popup = Menu(parent, tearoff=0)
-popup.add_command(label="Boxy", command=x.openPlasma)
+popup.add_command(label="Boxy", command=x.openBoxy)
 popup.add_command(label="Colors", command=x.openColors)
 popup.add_command(label="Space", command=x.openSpace)
 popup.add_command(label="Plains", command=x.openPlains)
@@ -93,13 +103,14 @@ parent.title('Image Process')
 frame = ttk.Frame(parent, borderwidth=5)
 
 # buttons
+jdata = 0
 select = ttk.Button(parent, text="Select Image")
 select.bind("<Button-1>", do_popup)
-mess_with = ttk.Button(parent, text="Process Image")
+mess_with = ttk.Button(parent, text="Process Image", command=x.renderfy)
 
 
 # placement geometry
-select.place(x=175, y=15)
+select.place(x=185, y=15)
 mess_with.place(x=285, y=15)
 
 parent.geometry("570x475")
