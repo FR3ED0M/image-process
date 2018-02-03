@@ -67,11 +67,13 @@ class openImage:
 def renderfy():
     im2 = Image.open("new_image.png")
     im2 = im2.resize((250, 250), Image.ANTIALIAS)
-
     im2.getpixel((0, 0))
-    for i in range(0, 95):
-        for j in range(0, 100):
-            im2.putpixel((i, j), (205, 220, 158))
+
+    for i in range(0, 50):
+        for j in range(0, 50):
+            im2.putpixel((i*5, j*5), (255, 0, 0))
+            im2.putpixel((5 * i + 2, 5 * j + 2), (0, 0, 255))
+            im2.putpixel((5 * i + 3, 5 * j + 3), (0, 255, 0))
 
     ph2 = ImageTk.PhotoImage(im2)
     label8 = Label(image=ph2)
@@ -121,5 +123,5 @@ mess_with = ttk.Button(parent, text="Process Image", command=renderfy)
 select.place(x=185, y=15)
 mess_with.place(x=300, y=15)
 
-parent.geometry("570x475")
+parent.geometry("570x385")
 parent.mainloop()
