@@ -76,17 +76,17 @@ class openImage:
 # Changes pixel color to either red, green, and blue
 # based on the width and height of the image
 def rgbPixel():
-    im2 = Image.open("new_image.png")     # opens the new image file after it was opened above
-    im2 = im2.resize((250, 250), Image.ANTIALIAS)    # resized to 250x250
-    im2.getpixel((0, 0))     # gets the pixel (R,G,B) data from the image
+    im2 = Image.open("new_image.png")                   # opens the new image file after it was opened above
+    im2 = im2.resize((250, 250), Image.ANTIALIAS)       # resized to 250x250
+    im2.getpixel((0, 0))                                # gets the pixel (R,G,B) data from the image
 
-    for i in range(0, 50):   # inside the inner range of 50 of the width
-        for j in range(0, 50):  # inside the inner range of 50 of the height
-            im2.putpixel((i*5, j*5), (255, 0, 0))   # changes pixel color to Red
+    for i in range(0, 50):                              # inside the inner range of 50 of the width
+        for j in range(0, 50):                          # inside the inner range of 50 of the height
+            im2.putpixel((i*5, j*5), (255, 0, 0))       # changes pixel color to Red
             im2.putpixel((5 * i + 2, 5 * j + 2), (0, 0, 255))   # changes pixel color to Green
             im2.putpixel((5 * i + 3, 5 * j + 3), (0, 255, 0))   # changes pixel color to Blue
 
-    ph2 = ImageTk.PhotoImage(im2)   # standard placement of image just like used above
+    ph2 = ImageTk.PhotoImage(im2)                       # standard placement of image just like used above
     label8 = Label(image=ph2)
     label8.image = ph2
     label8.place(x=300, y=75)
