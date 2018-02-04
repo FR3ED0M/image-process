@@ -64,7 +64,7 @@ class openImage:
         return im
 
 
-def renderfy():
+def rgbPixel():
     im2 = Image.open("new_image.png")
     im2 = im2.resize((250, 250), Image.ANTIALIAS)
     im2.getpixel((0, 0))
@@ -78,6 +78,16 @@ def renderfy():
     ph2 = ImageTk.PhotoImage(im2)
     label8 = Label(image=ph2)
     label8.image = ph2
+    label8.place(x=300, y=75)
+    return
+
+
+def grayscale():
+    im3 = Image.open("new_image.png").convert('L')
+    im3 = im3.resize((250, 250), Image.ANTIALIAS)
+    ph3 = ImageTk.PhotoImage(im3)
+    label8 = Label(image=ph3)
+    label8.image = ph3
     label8.place(x=300, y=75)
     return
 
@@ -116,12 +126,15 @@ frame = ttk.Frame(parent, borderwidth=5)
 jdata = 0
 select = ttk.Button(parent, text="Select Image")
 select.bind("<Button-1>", do_popup)
-mess_with = ttk.Button(parent, text="Process Image", command=renderfy)
+processBttn = ttk.Button(parent, text="Colorify Pixels", command=rgbPixel)
+grayscaleBttn = ttk.Button(parent, text="Grayscale", command=grayscale)
 
 
 # placement geometry
-select.place(x=185, y=15)
-mess_with.place(x=300, y=15)
+select.place(x=10, y=15)
+processBttn.place(x=300, y=15)
+grayscaleBttn.place(x=395, y=15)
 
-parent.geometry("570x385")
+
+parent.geometry("565x375")
 parent.mainloop()
